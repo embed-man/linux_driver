@@ -1,0 +1,2 @@
+insmod globalmem.ko
+之后，就可也以去/sys/class/下去查看自己创建的文件，和/dev/自己的设备文件名
