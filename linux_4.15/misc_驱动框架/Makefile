@@ -25,7 +25,7 @@ clean:
 
 else
     # called from kernel build system: just declare what our modules are
-    obj-m := book.o
+    obj-m := misc_demo.o
 endif
 
 
