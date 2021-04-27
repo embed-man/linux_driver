@@ -143,6 +143,9 @@ int motor_resume(struct platform_device *pdev)
 
 static struct platform_device motor_pdev = {
 	.name		= "motor",
+    .dev        = {
+
+    }
 };
 
 static struct platform_driver motor_pdrv = {
