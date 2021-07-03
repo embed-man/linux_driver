@@ -1,0 +1,116 @@
+[104095.419939] pr_err proc_test_init...
+[104095.419951] ------------[ cut here ]------------
+[104095.419952] proc_dir_entry '/proc/test_hello' already registered
+[104095.419978] WARNING: CPU: 0 PID: 44258 at /build/linux-hwe-5.4-uyV8Lf/linux-hwe-5.4-5.4.0/fs/proc/generic.c:375 proc_register+0xbc/0x140
+[104095.419978] Modules linked in: proc_demo(OE+) rpcsec_gss_krb5 nfsv4 nfs fscache vmw_vsock_vmci_transport vsock intel_rapl_msr intel_rapl_common coretemp snd_ens1371 crct10dif_pclmul snd_ac97_codec crc32_pclmul gameport ac97_bus ghash_clmulni_intel snd_pcm aesni_intel crypto_simd snd_seq_midi snd_seq_midi_event snd_rawmidi snd_seq cryptd vmwgfx glue_helper snd_seq_device snd_timer rapl snd soundcore ttm drm_kms_helper vmw_balloon drm fb_sys_fops syscopyarea sysfillrect sysimgblt joydev input_leds serio_raw mac_hid vmw_vmci sch_fq_codel nfsd parport_pc auth_rpcgss nfs_acl ppdev lockd grace lp parport sunrpc ip_tables x_tables autofs4 vmw_pvscsi vmxnet3 hid_generic usbhid hid psmouse mptspi mptscsih e1000 mptbase scsi_transport_spi i2c_piix4 pata_acpi floppy [last unloaded: proc_demo]
+[104095.420004] CPU: 0 PID: 44258 Comm: insmod Tainted: P        W  OE     5.4.0-77-generic #86~18.04.1-Ubuntu
+[104095.420005] Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 07/02/2012
+[104095.420006] RIP: 0010:proc_register+0xbc/0x140
+[104095.420008] Code: 8d b3 78 ff ff ff 4c 89 ff e8 30 fa ff ff 85 c0 78 df 75 bd 49 8b b5 a0 00 00 00 4c 89 fa 48 c7 c7 a8 e7 77 aa e8 04 98 d2 ff <0f> 0b c6 05 73 98 9c 01 00 41 8b 44 24 5c 48 c7 c7 f0 02 b2 aa 8d
+[104095.420008] RSP: 0018:ffffac9002b5bbf8 EFLAGS: 00010282
+[104095.420009] RAX: 0000000000000000 RBX: ffff8f056ee66688 RCX: 0000000000000006
+[104095.420010] RDX: 0000000000000007 RSI: 0000000000000092 RDI: ffff8f05b48178c0
+[104095.420010] RBP: ffffac9002b5bc20 R08: 000000000000069b R09: 0000000000000004
+[104095.420011] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f056ee66b40
+[104095.420011] R13: ffffffffaab201e0 R14: ffffffffaab20260 R15: ffff8f056ee66beb
+[104095.420013] FS:  00007eff2f770540(0000) GS:ffff8f05b4800000(0000) knlGS:0000000000000000
+[104095.420014] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[104095.420014] CR2: 0000558921e12188 CR3: 000000006c23a006 CR4: 00000000001606f0
+[104095.420087] Call Trace:
+[104095.420092]  ? 0xffffffffc08eb000
+[104095.420094]  proc_create_data+0x3e/0x50
+[104095.420095]  proc_create+0x14/0x20
+[104095.420098]  proc_test_init+0x5b/0x1000 [proc_demo]
+[104095.420101]  do_one_initcall+0x4a/0x200
+[104095.420103]  ? _cond_resched+0x19/0x40
+[104095.420135]  ? kmem_cache_alloc_trace+0x213/0x230
+[104095.420144]  do_init_module+0x5f/0x22e
+[104095.420147]  load_module+0x1c9b/0x22d0
+[104095.420149]  __do_sys_finit_module+0xfc/0x120
+[104095.420150]  ? __do_sys_finit_module+0xfc/0x120
+[104095.420152]  __x64_sys_finit_module+0x1a/0x20
+[104095.420154]  do_syscall_64+0x57/0x190
+[104095.420156]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[104095.420157] RIP: 0033:0x7eff2f293639
+[104095.420158] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f8 2c 00 f7 d8 64 89 01 48
+[104095.420159] RSP: 002b:00007ffe83cd9498 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[104095.420160] RAX: ffffffffffffffda RBX: 0000558921e0f7e0 RCX: 00007eff2f293639
+[104095.420160] RDX: 0000000000000000 RSI: 000055892017ad2e RDI: 0000000000000003
+[104095.420161] RBP: 000055892017ad2e R08: 0000000000000000 R09: 00007eff2f566000
+[104095.420161] R10: 0000000000000003 R11: 0000000000000246 R12: 0000000000000000
+[104095.420162] R13: 0000558921e0f760 R14: 0000000000000000 R15: 0000000000000000
+[104095.420163] ---[ end trace 12c85dbe9f2cc71d ]---
+[104264.965287] pr_err proc_test_exit...
+[104264.965293] ------------[ cut here ]------------
+[104264.965293] name 'test_hello'
+[104264.965311] WARNING: CPU: 0 PID: 45353 at /build/linux-hwe-5.4-uyV8Lf/linux-hwe-5.4-5.4.0/fs/proc/generic.c:696 remove_proc_entry+0x110/0x170
+[104264.965312] Modules linked in: proc_demo(OE-) rpcsec_gss_krb5 nfsv4 nfs fscache vmw_vsock_vmci_transport vsock intel_rapl_msr intel_rapl_common coretemp snd_ens1371 crct10dif_pclmul snd_ac97_codec crc32_pclmul gameport ac97_bus ghash_clmulni_intel snd_pcm aesni_intel crypto_simd snd_seq_midi snd_seq_midi_event snd_rawmidi snd_seq cryptd vmwgfx glue_helper snd_seq_device snd_timer rapl snd soundcore ttm drm_kms_helper vmw_balloon drm fb_sys_fops syscopyarea sysfillrect sysimgblt joydev input_leds serio_raw mac_hid vmw_vmci sch_fq_codel nfsd parport_pc auth_rpcgss nfs_acl ppdev lockd grace lp parport sunrpc ip_tables x_tables autofs4 vmw_pvscsi vmxnet3 hid_generic usbhid hid psmouse mptspi mptscsih e1000 mptbase scsi_transport_spi i2c_piix4 pata_acpi floppy [last unloaded: proc_demo]
+[104264.965339] CPU: 0 PID: 45353 Comm: rmmod Tainted: P        W  OE     5.4.0-77-generic #86~18.04.1-Ubuntu
+[104264.965340] Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 07/02/2012
+[104264.965342] RIP: 0010:remove_proc_entry+0x110/0x170
+[104264.965343] Code: 00 00 75 2d 48 89 df e8 be fc ff ff e9 5c ff ff ff 48 8b 45 d0 83 68 60 01 eb b9 4c 89 e6 48 c7 c7 e7 e6 77 aa e8 90 90 d2 ff <0f> 0b e9 3c ff ff ff 4c 89 e7 e8 51 9c 73 00 48 8d 90 78 ff ff ff
+[104264.965343] RSP: 0018:ffffac9002f73e88 EFLAGS: 00010286
+[104264.965344] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000006
+[104264.965345] RDX: 0000000000000007 RSI: 0000000000000092 RDI: ffff8f05b48178c0
+[104264.965345] RBP: ffffac9002f73eb8 R08: 00000000000006c5 R09: 0000000000000004
+[104264.965346] R10: 0000000000000000 R11: 0000000000000001 R12: ffffffffc08e60b1
+[104264.965346] R13: ffff8f056ee66240 R14: 0000000000000000 R15: 0000000000000000
+[104264.965347] FS:  00007f10e8197540(0000) GS:ffff8f05b4800000(0000) knlGS:0000000000000000
+[104264.965348] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[104264.965348] CR2: 000055af4f1891c8 CR3: 0000000009358003 CR4: 00000000001606f0
+[104264.965382] Call Trace:
+[104264.965389]  proc_test_exit+0x3d/0xf86 [proc_demo]
+[104264.965392]  __x64_sys_delete_module+0x146/0x290
+[104264.965395]  do_syscall_64+0x57/0x190
+[104264.965398]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[104264.965429] RIP: 0033:0x7f10e7cc1047
+[104264.965431] Code: 73 01 c3 48 8b 0d 41 8e 2c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 b8 b0 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 11 8e 2c 00 f7 d8 64 89 01 48
+[104264.965431] RSP: 002b:00007ffd77913bb8 EFLAGS: 00000206 ORIG_RAX: 00000000000000b0
+[104264.965457] RAX: ffffffffffffffda RBX: 00007ffd77913c18 RCX: 00007f10e7cc1047
+[104264.965458] RDX: 000000000000000a RSI: 0000000000000800 RDI: 000055af4f17e7c8
+[104264.965459] RBP: 000055af4f17e760 R08: 00007ffd77912b31 R09: 0000000000000000
+[104264.965459] R10: 00007f10e7d3dc40 R11: 0000000000000206 R12: 00007ffd77913de0
+[104264.965459] R13: 00007ffd77915809 R14: 000055af4f17e260 R15: 000055af4f17e760
+[104264.965461] ---[ end trace 12c85dbe9f2cc71e ]---
+[104270.726611] pr_err proc_test_init...
+[104270.726619] ------------[ cut here ]------------
+[104270.726620] proc_dir_entry '/proc/test_hello' already registered
+[104270.726655] WARNING: CPU: 0 PID: 45363 at /build/linux-hwe-5.4-uyV8Lf/linux-hwe-5.4-5.4.0/fs/proc/generic.c:375 proc_register+0xbc/0x140
+[104270.726656] Modules linked in: proc_demo(OE+) rpcsec_gss_krb5 nfsv4 nfs fscache vmw_vsock_vmci_transport vsock intel_rapl_msr intel_rapl_common coretemp snd_ens1371 crct10dif_pclmul snd_ac97_codec crc32_pclmul gameport ac97_bus ghash_clmulni_intel snd_pcm aesni_intel crypto_simd snd_seq_midi snd_seq_midi_event snd_rawmidi snd_seq cryptd vmwgfx glue_helper snd_seq_device snd_timer rapl snd soundcore ttm drm_kms_helper vmw_balloon drm fb_sys_fops syscopyarea sysfillrect sysimgblt joydev input_leds serio_raw mac_hid vmw_vmci sch_fq_codel nfsd parport_pc auth_rpcgss nfs_acl ppdev lockd grace lp parport sunrpc ip_tables x_tables autofs4 vmw_pvscsi vmxnet3 hid_generic usbhid hid psmouse mptspi mptscsih e1000 mptbase scsi_transport_spi i2c_piix4 pata_acpi floppy [last unloaded: proc_demo]
+[104270.726690] CPU: 0 PID: 45363 Comm: insmod Tainted: P        W  OE     5.4.0-77-generic #86~18.04.1-Ubuntu
+[104270.726691] Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 07/02/2012
+[104270.726693] RIP: 0010:proc_register+0xbc/0x140
+[104270.726694] Code: 8d b3 78 ff ff ff 4c 89 ff e8 30 fa ff ff 85 c0 78 df 75 bd 49 8b b5 a0 00 00 00 4c 89 fa 48 c7 c7 a8 e7 77 aa e8 04 98 d2 ff <0f> 0b c6 05 73 98 9c 01 00 41 8b 44 24 5c 48 c7 c7 f0 02 b2 aa 8d
+[104270.726695] RSP: 0018:ffffac9002f73c08 EFLAGS: 00010282
+[104270.726696] RAX: 0000000000000000 RBX: ffff8f056ee66688 RCX: 0000000000000006
+[104270.726697] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff8f05b48178c0
+[104270.726697] RBP: ffffac9002f73c30 R08: 00000000000006e5 R09: 0000000000000004
+[104270.726698] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f056ee66b40
+[104270.726699] R13: ffffffffaab201e0 R14: ffffffffaab20260 R15: ffff8f056ee66beb
+[104270.726700] FS:  00007fb414de7540(0000) GS:ffff8f05b4800000(0000) knlGS:0000000000000000
+[104270.726701] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[104270.726701] CR2: 00005581220cc188 CR3: 000000006c18a005 CR4: 00000000001606f0
+[104270.726766] Call Trace:
+[104270.726776]  ? 0xffffffffc08eb000
+[104270.726778]  proc_create_data+0x3e/0x50
+[104270.726782]  proc_test_init+0x5e/0x1000 [proc_demo]
+[104270.726791]  do_one_initcall+0x4a/0x200
+[104270.726797]  ? kfree+0x22b/0x240
+[104270.726801]  ? _cond_resched+0x19/0x40
+[104270.726816]  ? kmem_cache_alloc_trace+0x213/0x230
+[104270.726823]  do_init_module+0x5f/0x22e
+[104270.726827]  load_module+0x1c9b/0x22d0
+[104270.726829]  __do_sys_finit_module+0xfc/0x120
+[104270.726830]  ? __do_sys_finit_module+0xfc/0x120
+[104270.726832]  __x64_sys_finit_module+0x1a/0x20
+[104270.726833]  do_syscall_64+0x57/0x190
+[104270.726835]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[104270.726836] RIP: 0033:0x7fb41490a639
+[104270.726837] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f8 2c 00 f7 d8 64 89 01 48
+[104270.726838] RSP: 002b:00007ffcbec0c228 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[104270.726839] RAX: ffffffffffffffda RBX: 00005581220c97e0 RCX: 00007fb41490a639
+[104270.726839] RDX: 0000000000000000 RSI: 000055812171fd2e RDI: 0000000000000003
+[104270.726840] RBP: 000055812171fd2e R08: 0000000000000000 R09: 00007fb414bdd000
+[104270.736563] R10: 0000000000000003 R11: 0000000000000246 R12: 0000000000000000
+[104270.736575] R13: 00005581220c9760 R14: 0000000000000000 R15: 0000000000000000
+[104270.736581] ---[ end trace 12c85dbe9f2cc71f ]---
